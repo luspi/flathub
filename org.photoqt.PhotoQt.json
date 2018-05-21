@@ -32,6 +32,7 @@
         {
             "name": "libraw",
             "builddir": true,
+            "config-opts": [ "--disable-examples"],
             "sources": [
                 {
                     "type": "archive",
@@ -59,19 +60,76 @@
             ]
         },
         {
+            "name": "poppler",
+            "modules": [
+                {
+                    "name": "popplerdata",
+                    "no-autogen": true,
+                    "make-install-args": ["prefix=/app"],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "http://poppler.freedesktop.org/poppler-data-0.4.7.tar.gz",
+                            "sha256": "e752b0d88a7aba54574152143e7bf76436a7ef51977c55d6bd9a48dccde3a7de"
+                        }
+                    ]
+                }
+            ],
+            "config-opts": [ "--disable-libopenjpeg", "--disable-introspection" ],
+            "cleanup": [ "/bin" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://poppler.freedesktop.org/poppler-0.51.0.tar.xz",
+                    "sha256": "e997c9ad81a8372f2dd03a02b00692b8cc479c220340c8881edaca540f402c1f"
+                }
+            ]
+        },
+        {
+            "name": "devil",
+            "buildsystem": "cmake-ninja",
+            "subdir": "DevIL",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://sourceforge.net/projects/openil/files/DevIL/1.8.0/DevIL-1.8.0.tar.gz",
+                    "sha256":"0075973ee7dd89f0507873e2580ac78336452d29d34a07134b208f44e2feb709"
+                }
+            ]
+        },
+        {
+            "name": "unrar",
+            "buildsystem": "simple",
+            "builddir": true,
+            "build-commands": [
+                "make",
+                "install -D unrar /app/bin/unrar"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.rarlab.com/rar/unrarsrc-5.6.4.tar.gz",
+                    "sha256":"9335d2201870f2034007c04be80e00f1dc23932cb88b329d55c76134e6ba49fe"
+                }
+            ]
+        },
+        {
             "name": "photoqt",
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "config-opts": [
                 "-DGM=ON",
                 "-DEXIV2=ON",
-                "-DRAW=ON"
+                "-DRAW=ON",
+                "-DPOPPLER=ON",
+                "-DDEVIL=ON",
+                "-DFREEIMAGE=OFF"
             ],
             "sources": [
                 {
                     "type": "git",
-                    "tag": "v1.6-flatpakready",
-                    "commit": "4db7fbe777caf191bee7a795cc99d54656e83007",
+                    "commit": "c464c5323e8322655f660f875c58bbe1775afa3a",
                     "url": "https://gitlab.com/luspi/photoqt.git"
                 }
             ]
