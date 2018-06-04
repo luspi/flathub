@@ -1,7 +1,7 @@
 {
     "id": "org.photoqt.PhotoQt",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.10",
+    "runtime-version": "5.11",
     "sdk": "org.kde.Sdk",
     "command": "photoqt",
     "rename-desktop-file": "photoqt.desktop",
@@ -24,8 +24,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://exiv2.org/exiv2-0.25.tar.gz",
-                    "sha256":"c80bfc778a15fdb06f71265db2c3d49d8493c382e516cb99b8c9f9cbde36efa4"
+                    "url": "http://www.exiv2.org/builds/exiv2-0.26-trunk.tar.gz",
+                    "sha256":"c75e3c4a0811bf700d92c82319373b7a825a2331c12b8b37d41eb58e4f18eafb"
                 }
             ]
         },
@@ -36,8 +36,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.libraw.org/data/LibRaw-0.18.8.tar.gz",
-                    "sha256":"56aca4fd97038923d57d2d17d90aa11d827f1f3d3f1d97e9f5a0d52ff87420e2"
+                    "url": "https://www.libraw.org/data/LibRaw-0.18.11.tar.gz",
+                    "sha256":"7cf724a40a0d8915869498f51062a952167e4f5bae2b6920542c9e0e079a471d"
                 }
             ]
         },
@@ -54,8 +54,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.icm.edu.pl/pub/unix/graphics/GraphicsMagick/1.3/GraphicsMagick-1.3.28.tar.gz",
-                    "md5":"fbc860ae180aac7757703d05660c9cf5"
+                    "url": "http://ftp.icm.edu.pl/pub/unix/graphics/GraphicsMagick/1.3/GraphicsMagick-1.3.29.tar.gz",
+                    "sha256":"de820cd10597205941a7e9d02c2e679231e92e8e769c204ef09034d2279ad453"
                 }
             ]
         },
@@ -69,19 +69,20 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "http://poppler.freedesktop.org/poppler-data-0.4.7.tar.gz",
-                            "sha256": "e752b0d88a7aba54574152143e7bf76436a7ef51977c55d6bd9a48dccde3a7de"
+                            "url": "http://poppler.freedesktop.org/poppler-data-0.4.9.tar.gz",
+                            "sha256": "1f9c7e7de9ecd0db6ab287349e31bf815ca108a5a175cf906a90163bdbe32012"
                         }
                     ]
                 }
             ],
-            "config-opts": [ "--disable-libopenjpeg", "--disable-introspection" ],
+            "config-opts": [ "-DENABLE_GOBJECT_INTROSPECTION=OFF", "-DENABLE_LIBOPENJPEG=none" ],
+            "buildsystem": "cmake-ninja",
             "cleanup": [ "/bin" ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://poppler.freedesktop.org/poppler-0.51.0.tar.xz",
-                    "sha256": "e997c9ad81a8372f2dd03a02b00692b8cc479c220340c8881edaca540f402c1f"
+                    "url": "https://poppler.freedesktop.org/poppler-0.65.0.tar.xz",
+                    "sha256": "89c8cf73f83efda78c5a9bd37c28f4593ad0e8a51556dbe39ed81e1ae2dd8f07"
                 }
             ]
         },
@@ -129,7 +130,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "commit": "c464c5323e8322655f660f875c58bbe1775afa3a",
+                    "commit": "307efbc7b5ae94bc0825984e2f6fe34d2814166b",
                     "url": "https://gitlab.com/luspi/photoqt.git"
                 }
             ]
